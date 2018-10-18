@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bookservice.WebAPI.Data;
+using Bookservice.WebAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,8 @@ namespace Bookservice.WebAPI
             services.AddDbContext<BookServiceContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("BookService"))
                 );
+
+            services.AddScoped<BookRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
