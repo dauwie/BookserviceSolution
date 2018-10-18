@@ -11,5 +11,17 @@ namespace Bookservice.WebAPI.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
+
+        public Author()
+        {
+        }
+
+        public Author(int id, string firstName, string lastName, DateTime birthDate)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            BirthDate = birthDate;
+        }
     }
 }
