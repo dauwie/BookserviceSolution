@@ -10,5 +10,16 @@ namespace Bookservice.WebAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
+
+        public Publisher()
+        {
+        }
+
+        public Publisher(int id, string name, string country)
+        {
+            Id = id;
+            Name = name;
+            Country = country;
+        }
     }
 }
