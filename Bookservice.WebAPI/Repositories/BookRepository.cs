@@ -9,36 +9,33 @@ using System.Threading.Tasks;
 
 namespace Bookservice.WebAPI.Repositories
 {
-    public class BookRepository
+    public class BookRepository : Repository<Book>
     {
-        private BookServiceContext bookServiceContext;
-
-        public BookRepository(BookServiceContext context)
+        public BookRepository(BookServiceContext context) : base(context)
         {
-            bookServiceContext = context;
         }
-
-        public List<Book> List()
+               
+        public async Task<List<Book>> GetAllInclusive()
         {
-            return bookServiceContext.Books
+            return await GetAll()
                 .Include(b => b.Author)
                 .Include(b => b.Publisher)
-                .ToList();
+                .ToListAsync();
         }
 
-        public List<BookBasic> ListBasic()
+        public async Task<List<BookBasic>> ListBasic()
         {
-            return bookServiceContext.Books.Select(
+            return await _bookServiceContext.Books.Select(
                 b => new BookBasic
                 {
                     Id = b.Id,
                     Title = b.Title
-                }).ToList();
+                }).ToListAsync();
         }
 
-        public BookDetail GetById(int id)
+        public async Task<BookDetail> GetDetailById(int id)
         {
-            return bookServiceContext.Books.Select(b => new BookDetail
+            return await _bookServiceContext.Books.Select(b => new BookDetail
             {
                 Id = b.Id,
                 Title = b.Title,
@@ -51,7 +48,7 @@ namespace Bookservice.WebAPI.Repositories
                 PublisherId = b.Publisher.Id,
                 PublisherName = b.Publisher.Name,
                 FileName = b.FileName
-            }).FirstOrDefault(b => b.Id == id);
+            }).FirstOrDefaultAsync(b => b.Id == id);
         }
     }
 }
