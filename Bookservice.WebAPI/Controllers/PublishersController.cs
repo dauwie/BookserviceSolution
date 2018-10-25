@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bookservice.WebAPI.Models;
 using Bookservice.WebAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,26 @@ namespace Bookservice.WebAPI.Controllers
         public IActionResult GetPublisher(int id)
         {
             return Ok(_publisherRepository.GetById(id));
+        }
+
+        //PUT: api/Publishers/2
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutPublisher([FromRoute] int id, [FromBody] Publisher publisher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if(id != publisher.Id)
+            {
+                return BadRequest();
+            }
+            Publisher updatedPublisher = await _publisherRepository.Update(publisher);
+            if(updatedPublisher == null)
+            {
+                return NotFound();
+            }
+            return Ok(updatedPublisher);
         }
                      
     }
