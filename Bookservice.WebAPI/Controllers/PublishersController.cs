@@ -53,6 +53,32 @@ namespace Bookservice.WebAPI.Controllers
             }
             return Ok(updatedPublisher);
         }
-                     
+
+        //POST: api/publishers
+        [HttpPost]
+        public async Task<IActionResult> PostPublisher([FromBody] Publisher publisher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _publisherRepository.Add(publisher);
+
+            return CreatedAtAction("GetPublisher", new { id = publisher.Id }, publisher);
+        }    
+        
+        //DELETE: api/Publishers/3
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePublisher ([FromRoute] int id)
+        {
+            var publisher = await _publisherRepository.Delete(id);
+            if(publisher == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(publisher);
+        }
     }
 }

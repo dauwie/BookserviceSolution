@@ -9,25 +9,40 @@ namespace Bookservice.WebAPI.Data
 {
     public class BookServiceContext : DbContext
     {
-        public BookServiceContext(DbContextOptions<BookServiceContext> options) :base(options)
+        public BookServiceContext(DbContextOptions<BookServiceContext> options) : base(options)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Publisher>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<Author>()
+                .Property(a => a.Created)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<Book>()
+                .Property(b => b.Created)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<Publisher>()
                 .ToTable("Publisher")
                 .HasData(
-                new Publisher(1,"IT-Publishers","UK"),
-                new Publisher(2,"FoodBooks", "Sweden")
+                new Publisher(1, "IT-Publishers", "UK"),
+                new Publisher(2, "FoodBooks", "Sweden")
                 );
 
             modelBuilder.Entity<Author>()
                 .ToTable("Author")
                 .HasData(
-                new Author(1,"James","Sharp", new DateTime(1980,5,20)),
-                new Author(2,"Sophie","Netty", new DateTime(1992,3,4)),
-                new Author(3,"Elisa","Yammy", new DateTime(1996,8,12))
+                new Author(1, "James", "Sharp", new DateTime(1980, 5, 20)),
+                new Author(2, "Sophie", "Netty", new DateTime(1992, 3, 4)),
+                new Author(3, "Elisa", "Yammy", new DateTime(1996, 8, 12))
                 );
 
             modelBuilder.Entity<Book>()
@@ -35,15 +50,15 @@ namespace Bookservice.WebAPI.Data
                 .HasData(
                 new
                 {
-                   Id = 1,
-                   ISBN = "123456789",
-                   Title = "Learning C#",
-                   NumberOfPages = 420,
-                   FileName = "book1.jpg",
-                   AuthorId = 1,
-                   PublisherId = 1,
-                   Price = 24.99M,
-                   Year = 2018
+                    Id = 1,
+                    ISBN = "123456789",
+                    Title = "Learning C#",
+                    NumberOfPages = 420,
+                    FileName = "book1.jpg",
+                    AuthorId = 1,
+                    PublisherId = 1,
+                    Price = 24.99M,
+                    Year = 2018
                 },
                 new
                 {
