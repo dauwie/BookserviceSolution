@@ -1,46 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Bookservice.WebAPI.DTO;
+﻿using Bookservice.WebAPI.DTO;
+using Bookservice.WebAPI.Models;
 using Bookservice.WebAPI.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Bookservice.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BooksController : ControllerBase
+    public class BooksController : ControllerCrudBase<Book, BookRepository>
     {
         BookRepository _bookRepository;
 
-        public BooksController(BookRepository bookRepository)
-        {
-            _bookRepository = bookRepository;
+        public BooksController(BookRepository bookRepository) : base(bookRepository)
+        {            
         }
 
-        //api/Books
         [HttpGet]
-        public async Task<IActionResult> GetBooks()
+        public override async Task<IActionResult> Get()
         {
-            return Ok(await _bookRepository.GetAllInclusive());
+            return Ok(await repository.GetAllInclusive());
         }
 
-        //api/Books/Basic
         [HttpGet]
         [Route("Basic")]
         public async Task<IActionResult> GetBookBasic()
         {
-            return Ok(await _bookRepository.ListBasic());
-        }
-
-        // GET: api/Books/3
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetBook(int id)
-        {
-            return Ok(await _bookRepository.GetById(id));
+            return Ok(await repository.ListBasic());
         }
 
         // GET: api/books/imagebyname/book2.jpg
