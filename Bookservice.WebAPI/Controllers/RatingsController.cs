@@ -13,11 +13,24 @@ namespace Bookservice.WebAPI.Controllers
         {
         }
 
-        // GET: api/Ratings
         [HttpGet]
         public override async Task<IActionResult> Get()
         {
             return Ok(await repository.GetAllInclusive());
         }
+
+        /*Om een selfreferencing loop te vermijden OPTIE 1
+        // GET: api/Ratings
+        [HttpGet]
+        public override async Task<IActionResult> Get()
+        {
+            
+            var result = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+            return Ok(JsonConvert.SerializeObject(await repository.GetAllInclusive(),result));
+        }
+        */
     }
 }
