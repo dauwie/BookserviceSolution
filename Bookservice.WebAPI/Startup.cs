@@ -35,6 +35,8 @@ namespace Bookservice.WebAPI
             services.AddScoped<BookRepository>();
             services.AddScoped<AuthorRepository>();
             services.AddScoped<PublisherRepository>();
+            services.AddScoped<ReaderRepository>();
+            services.AddScoped<RatingRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
