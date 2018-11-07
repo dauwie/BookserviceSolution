@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,5 +21,8 @@ namespace Bookservice.WebAPI.Models
 
         public int Year { get; set; }
         public decimal Price { get; set; }
+
+        [JsonIgnore] //Oplossing 2 voor selfreferencing problemen te vermijden
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

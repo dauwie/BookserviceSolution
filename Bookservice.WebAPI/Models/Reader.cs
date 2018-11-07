@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Bookservice.WebAPI.Models
 {
@@ -6,6 +7,7 @@ namespace Bookservice.WebAPI.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [JsonIgnore] //Oplossing 2 voor selfreferencing problemen te vermijden
         public ICollection<Rating> Ratings { get; set; }
 
         public Reader()
