@@ -38,6 +38,14 @@ namespace Bookservice.WebAPI.Controllers
             return Ok(await repository.GetDetailById(id));
         }
 
+        [HttpGet]
+        [Route("Statistics")]
+        public async Task<IActionResult> GetBookStatistics()
+        {
+            return Ok(await repository.ListStatistics());
+        }
+
+
         // GET: api/books/imagebyname/book2.jpg
         [HttpGet]
         [Route("ImageByName/{filename}")]

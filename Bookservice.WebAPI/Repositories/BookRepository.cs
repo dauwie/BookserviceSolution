@@ -40,6 +40,15 @@ namespace Bookservice.WebAPI.Repositories
             //    }).ToListAsync();
         }
 
+        public async Task<List<BookStatistics>> ListStatistics()
+        {
+            return await _bookServiceContext.Books
+                    .Include(b => b.Ratings)
+                    .Where(b => b.Ratings.Count > 0)
+                    .ProjectTo<BookStatistics>(mapper.ConfigurationProvider)
+                    .ToListAsync();
+        }
+
         public async Task<BookDetail> GetDetailById(int id)
         {
             return mapper.Map<BookDetail>(

@@ -21,6 +21,12 @@ namespace Bookservice.WebAPI.Services.AutoMapper
                 .ForMember(
                     dest => dest.AuthorName,
                     opts => opts.MapFrom(src => $"{src.Author.FirstName}, {src.Author.LastName}"));
+            CreateMap<Publisher, PublisherBasic>();
+            CreateMap<Book, BookStatistics>()
+                .ForMember(dest => dest.RatingsCount,
+                            opts => opts.MapFrom(src => src.Ratings.Count))
+                .ForMember(dest => dest.ScoreAverage,
+                            opts => opts.MapFrom(src => src.Ratings.Average(r => r.Score)));
         }
     }
 }
