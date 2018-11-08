@@ -1,6 +1,9 @@
-﻿using Bookservice.WebAPI.Data;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Bookservice.WebAPI.Data;
 using Bookservice.WebAPI.DTO;
 using Bookservice.WebAPI.Models;
+using Bookservice.WebAPI.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Bookservice.WebAPI.Repositories
 {
-    public class BookRepository : Repository<Book>
+    public class BookRepository : MappingRepository<Book>
     {
-        public BookRepository(BookServiceContext context) : base(context)
+        public BookRepository(BookServiceContext context, IMapper mapper) : base(context, mapper)
         {
         }
                
@@ -25,12 +28,16 @@ namespace Bookservice.WebAPI.Repositories
 
         public async Task<List<BookBasic>> ListBasic()
         {
-            return await _bookServiceContext.Books.Select(
-                b => new BookBasic
-                {
-                    Id = b.Id,
-                    Title = b.Title
-                }).ToListAsync();
+            return await _bookServiceContext.Books
+                .ProjectTo<BookBasic>(mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            //return await _bookServiceContext.Books.Select(
+            //    b => new BookBasic
+            //    {
+            //        Id = b.Id,
+            //        Title = b.Title
+            //    }).ToListAsync();
         }
 
         public async Task<BookDetail> GetDetailById(int id)

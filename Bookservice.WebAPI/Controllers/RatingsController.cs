@@ -1,6 +1,7 @@
 ﻿using Bookservice.WebAPI.Models;
 using Bookservice.WebAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace Bookservice.WebAPI.Controllers
@@ -25,12 +26,13 @@ namespace Bookservice.WebAPI.Controllers
         public override async Task<IActionResult> Get()
         {
             
-            var result = new JsonSerializerSettings
+            var settings = new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
-            return Ok(JsonConvert.SerializeObject(await repository.GetAllInclusive(),result));
+            return Ok(JsonConvert.SerializeObject(await repository.GetAllInclusive(),settings));
         }
         */
+
     }
 }

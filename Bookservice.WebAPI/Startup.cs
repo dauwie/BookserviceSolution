@@ -1,5 +1,6 @@
 ﻿using Bookservice.WebAPI.Data;
 using Bookservice.WebAPI.Repositories;
+using Bookservice.WebAPI.Services.AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,11 @@ namespace Bookservice.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = new AutoMapper.MapperConfiguration(cfg => 
+                                                cfg.AddProfile(new AutoMapperProfileConfiguration()));
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddDbContext<BookServiceContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("BookService"))
                 );
