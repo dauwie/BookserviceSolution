@@ -1,5 +1,5 @@
 ﻿using Bookservice.WebAPI.Data;
-using Bookservice.WebAPI.Models;
+using Bookservice.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;

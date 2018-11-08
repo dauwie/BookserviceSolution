@@ -1,4 +1,4 @@
-﻿namespace Bookservice.WebAPI.Models
+﻿namespace Bookservice.Lib.Models
 {
     public class Rating : EntityBase
     {

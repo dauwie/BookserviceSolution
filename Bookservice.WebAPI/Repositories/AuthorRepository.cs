@@ -1,6 +1,6 @@
 ﻿using Bookservice.WebAPI.Data;
-using Bookservice.WebAPI.DTO;
-using Bookservice.WebAPI.Models;
+using Bookservice.Lib.DTO;
+using Bookservice.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

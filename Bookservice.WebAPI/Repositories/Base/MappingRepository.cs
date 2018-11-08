@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Bookservice.WebAPI.Data;
-using Bookservice.WebAPI.Models;
+using Bookservice.Lib.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

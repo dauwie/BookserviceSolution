@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Bookservice.WebAPI.Models
+namespace Bookservice.Lib.Models
 {
     public class Reader : EntityBase
     {

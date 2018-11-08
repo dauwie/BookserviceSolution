@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Bookservice.WebAPI.Data;
-using Bookservice.WebAPI.Models;
-using Bookservice.WebAPI.DTO;
+using Bookservice.Lib.Models;
+using Bookservice.Lib.DTO;
 using Bookservice.WebAPI.Repositories.Base;
 using System.Collections.Generic;
 using AutoMapper.QueryableExtensions;

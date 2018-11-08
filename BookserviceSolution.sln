@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookservice.WebAPI", "Bookservice.WebAPI\Bookservice.WebAPI.csproj", "{D52DC934-3528-4E2B-881C-A98E135B6F30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookservice.WebAPI", "Bookservice.WebAPI\Bookservice.WebAPI.csproj", "{D52DC934-3528-4E2B-881C-A98E135B6F30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookservice.Lib", "Bookservice.Lib\Bookservice.Lib.csproj", "{583CC044-2D10-4EAB-A1CA-A6511FD3020A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D52DC934-3528-4E2B-881C-A98E135B6F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D52DC934-3528-4E2B-881C-A98E135B6F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D52DC934-3528-4E2B-881C-A98E135B6F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

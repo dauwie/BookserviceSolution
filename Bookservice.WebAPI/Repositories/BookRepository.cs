@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bookservice.WebAPI.Data;
-using Bookservice.WebAPI.DTO;
-using Bookservice.WebAPI.Models;
+using Bookservice.Lib.DTO;
+using Bookservice.Lib.Models;
 using Bookservice.WebAPI.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
