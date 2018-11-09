@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookservice.WebAPI", "Books
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookservice.Lib", "Bookservice.Lib\Bookservice.Lib.csproj", "{583CC044-2D10-4EAB-A1CA-A6511FD3020A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookservice.MVC", "Bookservice.MVC\Bookservice.MVC.csproj", "{44FFAE30-8CD7-4328-9414-B51D7FE2757D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{583CC044-2D10-4EAB-A1CA-A6511FD3020A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44FFAE30-8CD7-4328-9414-B51D7FE2757D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44FFAE30-8CD7-4328-9414-B51D7FE2757D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44FFAE30-8CD7-4328-9414-B51D7FE2757D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44FFAE30-8CD7-4328-9414-B51D7FE2757D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

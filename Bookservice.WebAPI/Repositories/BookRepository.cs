@@ -30,6 +30,7 @@ namespace Bookservice.WebAPI.Repositories
         {
             return await _bookServiceContext.Books
                 .ProjectTo<BookBasic>(mapper.ConfigurationProvider)
+                .OrderBy(b => b.Title)
                 .ToListAsync();
 
             //return await _bookServiceContext.Books.Select(
