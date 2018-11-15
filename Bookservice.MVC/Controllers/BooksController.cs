@@ -19,6 +19,16 @@ namespace Bookservice.MVC.Controllers
             return View(GetApiResult<List<BookBasic>>(bookUri));
         }
 
+        public IActionResult Detail(int id)
+        {
+            string geekJokesUri = "https://geek-jokes.sameerkumar.website/api";
+            string ipsumUri = "https://baconipsum.com/api/?type=meat-and-filler&paras=2&format=text";
+
+
+            string bookUri = $"{baseuri}/basic";
+
+            return View(GetApiResult<List<BookBasic>>(bookUri));
+        }
 
         public T GetApiResult<T>(string uri)
         {
