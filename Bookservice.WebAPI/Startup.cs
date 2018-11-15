@@ -37,6 +37,8 @@ namespace Bookservice.WebAPI
             services.AddScoped<ReaderRepository>();
             services.AddScoped<RatingRepository>();
 
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -51,6 +53,7 @@ namespace Bookservice.WebAPI
             {
                 app.UseHsts();
             }
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseHttpsRedirection();
             app.UseMvc();

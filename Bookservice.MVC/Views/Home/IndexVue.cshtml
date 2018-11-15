@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Books with Vue.js";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<article id="app" class="row">
+    <header class="col-md-4">
+        <h3>{{ message }}</h3>   @*Vue mustache*@
+        <nav>
+            <ul class="list-group">
+                <li class="list-group-item" v-for="book in books">
+                    <span class="bookTitle">{{ book.title }}</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</article>
+
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <script>
+        var apiURL = 'https://localhost:44343/api/books/basic';
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Loading books...',
+                books: null
+            },
+            created: function () {
+                var self = this;
+                self.fetchBooks();
+            },
+            methods: {
+                fetchBooks: function () {
+                    self = this;
+                    fetch(`${apiURL}`)
+                        .then(res => res.json())
+                        .then(function (books) {
+                            self.books = books;
+                            self.message = 'Overview';
+                        })
+                        .catch(err => console.error('Fout: ' + err));
+                },
+            }
+        });
+    </script>
+}
+
