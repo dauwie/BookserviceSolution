@@ -52,7 +52,7 @@ namespace Bookservice.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] T entity)
+        public virtual async Task<IActionResult> Post([FromBody] T entity)
         {
             if (!ModelState.IsValid)
             {

@@ -74,5 +74,13 @@ namespace Bookservice.WebAPI.Repositories
             //    FileName = b.FileName
             //}).FirstOrDefaultAsync(b => b.Id == id);
         }
+
+        public override async Task<Book> GetById(int id)
+        {
+            return await _bookServiceContext.Books
+                .Include(b => b.Author)
+                .Include(b => b.Publisher)
+                .FirstOrDefaultAsync(b => b.Id == id);
+        }
     }
 }
